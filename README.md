@@ -7,12 +7,10 @@ A Web Based Kidney Disease prediction app implemented on Random Forest Algorithm
 ## *Home:*
 <img src='images/home.png'>
 <br>
-<br>
 
 ## *Result:*
 <img src='images/predict.png'>
 
-<br>
 <br>
 
 ## 🔗 Links
