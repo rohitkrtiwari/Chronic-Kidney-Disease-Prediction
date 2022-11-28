@@ -2,11 +2,9 @@
 
 A Web Based Kidney Disease prediction app implemented on Random Forest Algorithm and deployed on Flask.
 
-<br>
 
 ## *Home:*
 <img src='images/home.png'>
-<br>
 
 ## *Result:*
 <img src='images/predict.png'>
