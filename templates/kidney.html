@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Disease Predictor</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Fragment+Mono&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+.row{
+  background: #fff;
+  padding: 30px;
+  display: flex;
+
+}
+
+.colm{
+    margin: 0 40px;
+}
+
+.predict-button{
+    padding: 10px 60px;
+    background: orange;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 34px;
+    border: 2px solid orange !important;
+    transition-duration: .1s;
+}
+
+.predict-button:hover{
+    background: white;
+    color: orange;
+    border: 2px solid orange !important;
+}
+
+.row .input-data{
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.row .input-data input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 17px;
+  border-bottom: 2px solid silver;
+}
+.input-data input:focus ~ label,
+.input-data input:valid ~ label{
+  transform: translateY(-20px);
+  font-size: 15px;
+  color: orange;
+}
+.row .input-data label{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: grey;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.input-data .underline{
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+}
+.input-data .underline:before{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: orange;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before,
+.input-data input:valid ~ .underline:before{
+  transform: scaleX(1);
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <center style="margin-bottom: 50px;">
+            <h1 style="font-family: 'Nerko One', cursive; color:orange; font-size: 4.2em;">Kidney Disease Predictor</h1>
+            <p style="font-family: 'Fragment Mono', monospace; font-style: italic; font-size: 1.4em;">Predict the Probability of Chronic Kidney Disease</p>
+        </center>
+
+        <form action="http://127.0.0.1:5000/predict" method="POST">
+        <div class="row">
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="age" required>
+                    <div class="underline"></div>
+                    <label for="">Age</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="bp" required>
+                    <div class="underline"></div>
+                    <label for="">Blood Pressure</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="al" required>
+                    <div class="underline"></div>
+                    <label for="">Albumin</label>
+                </div>
+            </div>  
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="su" required>
+                    <div class="underline"></div>
+                    <label for="">Sugar</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="rbc" required>
+                    <div class="underline"></div>
+                    <label for="">Red Blood Cell</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="pc" required>
+                    <div class="underline"></div>
+                    <label for="">Pus Cell</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="pcc" required>
+                    <div class="underline"></div>
+                    <label for="">Pus Cell Clumps</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="ba" required>
+                    <div class="underline"></div>
+                    <label for="">Bacteria</label>
+                </div>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="bgr" required>
+                    <div class="underline"></div>
+                    <label for="">Blood Glucose Random</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="bu" required>
+                    <div class="underline"></div>
+                    <label for="">Blood Urea</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="sc" required>
+                    <div class="underline"></div>
+                    <label for="">Serum Creatinine</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="pot" required>
+                    <div class="underline"></div>
+                    <label for="">Potassium</label>
+                </div>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="wc" required>
+                    <div class="underline"></div>
+                    <label for="">White Blood Cell Count</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="htn" required>
+                    <div class="underline"></div>
+                    <label for="">Hypertension</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="dm" required>
+                    <div class="underline"></div>
+                    <label for="">Diabetes Mellitus</label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="cd" required>
+                    <div class="underline"></div>
+                    <label for="">Coronary Artery Disease</label>
+                </div>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="pe" required>
+                    <div class="underline"></div>
+                    <label for="">Pedal Edema </label>
+                </div>
+            </div>
+            <div class="colm">
+                <div class="input-data">
+                    <input type="text" name="ane" required>
+                    <div class="underline"></div>
+                    <label for="">Anemia</label>
+                </div>
+            </div>  
+
+            <div class="colm">
+                <div class="input-data">
+                    <input type="submit" value="Predict" class="predict-button">
+                </div>
+            </div>  
+            
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>
